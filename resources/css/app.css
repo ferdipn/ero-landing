@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  /* Nature-inspired Emerald Palette - Light */
+  --background: #FFFFFF; /* brighter clean white background */
+  --foreground: #0F2A20; /* deep charcoal with green tint for elegant contrast */
+  --primary: #0F6B4A; /* premium emerald */
+  --primary-dark: #0b553b;
+  --primary-light: #5FD7A0; /* complementary lighter emerald */
+  --secondary: #EAF7EE; /* soft green surface */
+  --secondary-dark: #D7EFE0;
+  --accent: var(--primary);
+  --muted: #F3FAF5;
+  --muted-foreground: #556a61;
+  --border: #E6F2EA;
+  --success: #138554;
+  --warning: #D69E2E;
+  --error: #C53030;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Single light theme only — dark mode overrides removed per preference */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

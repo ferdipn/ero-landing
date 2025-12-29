@@ -1,0 +1,33 @@
+{{-- Component: Footer --}}
+<footer class="bg-[var(--background)] text-[var(--foreground)] py-12 px-4 border-t border-[var(--border)]">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <div>
+        <h3 class="text-xl font-bold mb-4 text-[var(--primary)]">Ero Tour</h3>
+        <p class="text-[var(--muted-foreground)]">Your trusted travel partner since 1998</p>
+    </div>
+    <div>
+        <h4 class="font-semibold mb-4 text-[var(--primary)]">Quick Links</h4>
+        <ul class="space-y-2 text-[var(--muted-foreground)]">
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">Home</a></li>
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">Destinations</a></li>
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">Packages</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="font-semibold mb-4 text-[var(--primary)]">Support</h4>
+        <ul class="space-y-2 text-[var(--muted-foreground)]">
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">Contact Us</a></li>
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">FAQ</a></li>
+        <li><a href="#" class="hover:text-[var(--primary)] transition-colors">Blog</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="font-semibold mb-4 text-[var(--primary)]">Contact</h4>
+        <p class="text-[var(--muted-foreground)]">Email: info@erotour.com</p>
+        <p class="text-[var(--muted-foreground)]">Phone: +62 812-3456-7890</p>
+    </div>
+    </div>
+    <div class="border-t border-[var(--border)] pt-8 text-center text-[var(--muted-foreground)]">
+    <p>&copy; 2024 Ero Tour. All rights reserved.</p>
+    </div>
+</footer>
