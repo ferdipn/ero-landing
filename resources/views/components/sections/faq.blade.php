@@ -29,37 +29,38 @@
 
 <section
   id="faq"
-  class="py-16 md:py-20 lg:py-24 bg-muted/30"
+  class="py-16 md:py-20 lg:py-24 bg-white"
 >
   <div class="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
 
     {{-- Header --}}
     <div class="text-center mb-12 md:mb-16">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-        Pertanyaan <span class="text-[var(--primary)]">Umum</span>
+        Pertanyaan <span class="text-[var(--orange-main)]">Umum</span>
       </h2>
       <p class="text-muted-foreground text-lg">
         Temukan jawaban untuk pertanyaan yang sering diajukan
       </p>
+      <div class="w-24 h-1 bg-[var(--orange-main)]/20 mx-auto mt-6 rounded-full"></div>
     </div>
 
     {{-- Accordion --}}
-    <div class="space-y-3">
+    <div class="space-y-4">
       @foreach ($faqs as $index => $faq)
         <details
-          class="group bg-background border rounded-lg px-4"
+          class="group bg-[var(--bg-soft)] border-l-4 border-[var(--orange-main)] rounded-xl px-6 overflow-hidden transition-all duration-300 hover:shadow-md"
           data-testid="accordion-faq-{{ $index }}"
         >
           <summary
-            class="list-none cursor-pointer font-medium py-4 flex items-center justify-between"
+            class="list-none cursor-pointer py-5 flex items-center justify-between text-foreground hover:text-[var(--orange-main)] transition-colors"
           >
             <span>{{ $faq['question'] }}</span>
-            <span class="transition-transform group-open:rotate-180">
+            <span class="transition-transform group-open:rotate-180 text-[var(--orange-main)]">
               <x-ui.icon name="chevron-down" class="w-5 h-5" />
             </span>
           </summary>
 
-          <div class="text-muted-foreground pb-4 leading-relaxed">
+          <div class="text-muted-foreground pb-5 leading-relaxed border-t border-[var(--orange-main)]/10 pt-4">
             {{ $faq['answer'] }}
           </div>
         </details>

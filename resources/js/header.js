@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('mobile-menu-toggle')
   const iconMenu = document.getElementById('icon-menu')
   const iconClose = document.getElementById('icon-close')
+  const menuBtns = document.querySelectorAll('.nav-link')
 
   let isMobileOpen = false
 
@@ -25,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoSubtitle.classList.toggle('text-white/80', !scrolled)
     logoSubtitle.classList.toggle('text-[#6B6B6B]', scrolled)
+
+    menuBtns.forEach(btn => {
+      btn.classList.toggle('text-white/90', !scrolled)
+      btn.classList.toggle('text-[var(--orange-main)]', scrolled)
+    })
   }
 
   window.addEventListener('scroll', onScroll)

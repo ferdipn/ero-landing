@@ -2,19 +2,19 @@
 $navLinks = [
   ['label' => 'Beranda', 'href' => '#hero'],
   ['label' => 'Destinasi', 'href' => '#destinations'],
-  ['label' => 'Paket Wisata', 'href' => '#packages'],
+  ['label' => 'Paket Wisata', 'href' => '#featured-packages'],
   ['label' => 'Layanan', 'href' => '#services'],
   ['label' => 'FAQ', 'href' => '#faq'],
 ];
 @endphp
 
-@section('script')
-    <script href="{{ asset('js/header.js') }}" defer></script>
-@endsection
+@push('scripts')
+  @vite('resources/js/header.js')
+@endpush
 
 <header
   id="site-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+  class="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
 >
   <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-4 h-16 md:h-20">
@@ -23,7 +23,7 @@ $navLinks = [
       <div class="flex flex-col">
         <span
           id="logo-title"
-          class="text-xl md:text-2xl font-semibold tracking-tight text-white"
+          class="text-xl md:text-2xl font-semibold tracking-tight orange-main"
         >
           Ero Tour
         </span>
@@ -40,7 +40,7 @@ $navLinks = [
         @foreach ($navLinks as $link)
           <button
             data-href="{{ $link['href'] }}"
-            class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors text-white/90 hover:text-white hover:bg-white/10"
+            class="nav-link px-4 py-2 font-medium text-lg rounded-md transition-colors text-[var(--orange-main)] hover:text-[var(--orange-main)] hover:bg-[var(--orange-soft)] hover:bg-opacity-30 cursor-pointer"
           >
             {{ $link['label'] }}
           </button>
@@ -51,7 +51,7 @@ $navLinks = [
       <div class="flex items-center gap-2 md:gap-3">
         <button
           data-href="#contact"
-          class="cta-btn flex items-center px-4 py-2 rounded-md font-semibold bg-white text-[var(--primary)] hover:bg-[var(--background)] transition"
+          class="cta-btn flex items-center px-4 py-2 rounded-md font-semibold bg-[var(--orange-main)] text-white transition cursor-pointer"
         >
           {{-- Icon Phone (inline SVG) --}}
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"

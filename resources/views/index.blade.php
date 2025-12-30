@@ -6,6 +6,7 @@
     <x-sections.hero />
     <x-sections.why-us />
     <x-sections.destinations />
+    <x-sections.featured-packages />
     <x-sections.services />
     <x-sections.testimonials />
     <x-sections.faq />

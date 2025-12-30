@@ -10,15 +10,14 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-        @vite('resources/css/app.css')
-        <style>
-            .geist-sans { }
-            .geist-mono { }
-        </style>
-
-
+        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @else
+            <!-- Fallback CSS jika build belum ada -->
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @endif
     </head>
-    <body class="geist-sans geist-mono antialiased">
+    <body>
         <div class="min-h-screen bg-background">
             @include('components.header')
             <main>
@@ -26,7 +25,9 @@
             </main>
             @include('components.footer')
         </div>
+
+    @stack('scripts')
+    @yield('scripts')
     </body>
 
-    @yield('script')
 </html>

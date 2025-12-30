@@ -31,7 +31,7 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
       @foreach ($services as $index => $service)
         <div
-          class="group p-4 md:p-6 text-center rounded-xl bg-background border border-[var(--secondary)]
+          class="group p-4 md:p-6 text-center text-white rounded-xl bg-[var(--orange-main)] border-none
                  hover:border-[var(--primary)] hover:shadow-lg transition-all duration-300"
           data-testid="card-service-{{ $index }}"
         >

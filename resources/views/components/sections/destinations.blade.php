@@ -1,33 +1,39 @@
 @php
   $destinations = [
     [
+      'name' => 'Jam Gadang',
+      'subtitle' => 'Bukittinggi, Sumatera Barat',
+      'image' => asset('images/jam gadang.webp'),
+      'featured' => false,
+    ],
+    [
+      'name' => 'Harau',
+      'subtitle' => 'Payakumbuh, Sumatera Barat',
+      'image' => asset('images/harau.webp'),
+      'featured' => false,
+    ],
+    [
+      'name' => 'Kawasan Mandeh',
+      'subtitle' => 'Pesisir Selatan, Sumatera Barat',
+      'image' => asset('images/kawasan-mandeh.webp'),
+      'featured' => false,
+    ],
+    [
       'name' => 'Malaysia',
-      'subtitle' => 'Kuala Lumpur & Singapore',
-      'image' => 'https://images.unsplash.com/photo-1596422846543-75c6fc18a5cf?auto=format&fit=crop&w=800&q=80',
+      'subtitle' => 'Kuala Lumpur',
+      'image' => asset('images/malaysia.webp'),
       'featured' => true,
     ],
     [
       'name' => 'Thailand',
       'subtitle' => 'Bangkok & Pattaya',
-      'image' => 'https://images.unsplash.com/photo-1528181304800-2f140819898c?auto=format&fit=crop&w=800&q=80',
+      'image' => asset('images/thailand.webp'),
       'featured' => false,
     ],
     [
       'name' => 'Korea Selatan',
       'subtitle' => 'Seoul & Nami Island',
-      'image' => 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80',
-      'featured' => false,
-    ],
-    [
-      'name' => 'Jam Gadang',
-      'subtitle' => 'Bukittinggi, Sumatera Barat',
-      'image' => 'https://images.unsplash.com/photo-1572455044327-7348c1be7267?auto=format&fit=crop&w=800&q=80',
-      'featured' => false,
-    ],
-    [
-      'name' => 'Harau & Mandeh',
-      'subtitle' => 'Sumatera Barat',
-      'image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+      'image' => asset('images/nami-island.webp'),
       'featured' => false,
     ],
   ];
@@ -42,7 +48,7 @@
     {{-- Section header --}}
     <div class="text-center mb-12 md:mb-16">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-        Destinasi <span class="text-[var(--primary)]">Favorit</span>
+        Destinasi <span class="text-[var(--orange-main)]">Favorit</span>
       </h2>
       <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
         Jelajahi destinasi terpopuler pilihan wisatawan kami
@@ -54,10 +60,10 @@
       @foreach ($destinations as $index => $destination)
         <div
           class="group relative overflow-hidden rounded-2xl cursor-pointer
-          {{ $index === 0 ? 'md:col-span-2 md:row-span-2' : '' }}"
+          {{ $index === 0 ? 'lg:col-span-2 lg:row-span-2' : '' }}"
           data-testid="card-destination-{{ $index }}"
         >
-          <div class="relative {{ $index === 0 ? 'aspect-[4/3] md:aspect-[16/10]' : 'aspect-[4/3]' }}">
+          <div class="relative aspect-[4/3]">
             <img
               src="{{ $destination['image'] }}"
               alt="{{ $destination['name'] }}"

@@ -1,121 +1,88 @@
 @php
   $testimonials = [
     [
-      'id' => 1,
-      'name' => 'Budi Santoso',
-      'location' => 'Jakarta',
-      'rating' => 5,
-      'text' => 'Pengalaman tour ke Korea bersama Ero Tour sangat memuaskan. Pelayanan profesional dan akomodasi terbaik. Pasti akan booking lagi!',
-      'initials' => 'BS',
+      'name' => 'Andi Susanto',
+      'role' => 'Wisatawan',
+      'avatar' => 'AS',
+      'text' => 'Ero Tour membuat perjalanan liburan saya menjadi sangat menyenangkan dan bebas stres. Layanan mereka luar biasa!',
     ],
     [
-      'id' => 2,
-      'name' => 'Siti Rahayu',
-      'location' => 'Padang',
-      'rating' => 5,
-      'text' => 'Sudah 3 kali pakai jasa Ero Tour untuk perjalanan keluarga. Selalu puas dengan pelayanannya yang ramah dan detail.',
-      'initials' => 'SR',
+      'name' => 'Siti Rahma',
+      'role' => 'Korporat',
+      'avatar' => 'SR',
+      'text' => 'Kami mengandalkan Ero Tour untuk perjalanan bisnis perusahaan kami. Mereka selalu memberikan pengalaman yang profesional dan efisien.',
     ],
     [
-      'id' => 3,
-      'name' => 'Ahmad Fauzi',
-      'location' => 'Bandung',
-      'rating' => 5,
-      'text' => 'Corporate trip kantor kami dihandle dengan sangat baik. Semua berjalan lancar dan sesuai jadwal. Highly recommended!',
-      'initials' => 'AF',
-    ],
-    [
-      'id' => 4,
-      'name' => 'Linda Wijaya',
-      'location' => 'Surabaya',
-      'rating' => 5,
-      'text' => 'Paket Thailand sangat worth it! Guide lokal yang disediakan sangat membantu. Terima kasih Ero Tour!',
-      'initials' => 'LW',
-    ],
-    [
-      'id' => 5,
-      'name' => 'Rudi Hermawan',
-      'location' => 'Medan',
-      'rating' => 5,
-      'text' => 'Tour Sumatera Barat bersama keluarga besar jadi pengalaman tak terlupakan. Tim Ero Tour sangat profesional.',
-      'initials' => 'RH',
-    ],
-    [
-      'id' => 6,
-      'name' => 'Dewi Kusuma',
-      'location' => 'Yogyakarta',
-      'rating' => 5,
-      'text' => 'Honeymoon package ke Malaysia-Singapore super romantic! Semua sudah diatur dengan sempurna. Love it!',
-      'initials' => 'DK',
+      'name' => 'Budi Hartono',
+      'role' => 'Pendidik',
+      'avatar' => 'BH',
+      'text' => 'Perjalanan edukasi yang diorganisir oleh Ero Tour sangat bermanfaat bagi siswa kami. Terima kasih atas perhatian dan detailnya!',
     ],
   ];
 @endphp
 
-<section
-  id="testimonials"
-  class="py-16 md:py-20 lg:py-24"
->
-  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+@push('scripts')
+  @vite('resources/js/testimonials.js')
+@endpush
 
-    {{-- Section header --}}
-    <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-        Apa Kata <span class="text-[var(--primary)]">Mereka</span>?
-      </h2>
-      <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-        Testimoni dari wisatawan yang telah bepergian bersama kami
-      </p>
-    </div>
+<section class="py-20 md:py-24 lg:py-28 bg-[var(--bg-soft)] relative overflow-hidden">
+    {{-- Decorative elements --}}
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full -ml-48 -mb-48"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 md:mb-20">
+            <h2 class="text-4xl md:text-5xl lg:text-5xl font-bold mb-4 text-[var(--orange-main)]">
+              Kata Mereka Tentang Kami
+            </h2>
+            <p class="text-lg md:text-xl text-[var(--orange-main)]">Pengalaman nyata dari pelanggan kami yang puas</p>
+            <div class="w-24 h-1 bg-[var(--orange-main)] mx-auto mt-6 rounded-full"></div>
+        </div>
 
-    {{-- Testimonials grid --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      @foreach ($testimonials as $testimonial)
-        <x-ui.card
-          class="p-6 relative"
-          data-testid="card-testimonial-{{ $testimonial['id'] }}"
-        >
-          {{-- Quote icon --}}
-          <x-ui.icon
-            name="quote"
-            class="absolute top-4 right-4 w-8 h-8 text-[var(--primary)]/10"
-          />
-
-          {{-- Header --}}
-          <div class="flex items-center gap-3 mb-4">
-            {{-- Avatar --}}
-            <div class="w-10 h-10 rounded-full bg-[var(--secondary)]
-                        flex items-center justify-center
-                        text-[var(--primary)] font-semibold text-sm">
-              {{ $testimonial['initials'] }}
+        <div id="testimonialSlider" class="relative max-w-4xl mx-auto">
+            {{-- Testimonial Card --}}
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden group">
+                {{-- Quote icon --}}
+                <div class="absolute top-6 right-8 text-[var(--orange-soft)]/20 text-7xl font-serif">"</div>
+                
+                <p class="text-lg md:text-xl mb-8 italic text-[var(--foreground)] leading-relaxed relative z-10" id="testimonialText"></p>
+                
+                {{-- Divider --}}
+                <div class="w-12 h-1 bg-gradient-to-r from-[var(--orange-main)] to-[#FF8C42] rounded-full mb-6"></div>
+                
+                {{-- Author info --}}
+                <div class="flex items-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[var(--orange-main)] to-[#FF8C42] rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 shadow-lg" id="testimonialAvatar"></div>
+                    <div>
+                        <div class="font-bold text-lg text-[var(--foreground)]" id="testimonialName"></div>
+                        <div class="text-[var(--orange-main)] font-medium text-sm" id="testimonialRole"></div>
+                    </div>
+                </div>
             </div>
 
-            <div>
-              <h4 class="font-semibold text-foreground">
-                {{ $testimonial['name'] }}
-              </h4>
-              <p class="text-sm text-muted-foreground">
-                {{ $testimonial['location'] }}
-              </p>
-            </div>
-          </div>
+            {{-- Navigation buttons --}}
+            <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-20 w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center text-[var(--orange-main)] hover:shadow-xl hover:scale-110 transition-all duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
 
-          {{-- Rating --}}
-          <div class="flex gap-0.5 mb-3">
-            @for ($i = 0; $i < $testimonial['rating']; $i++)
-              <x-ui.icon
-                name="star"
-                class="w-4 h-4 text-[var(--primary)] fill-[var(--primary)]"
-              />
-            @endfor
-          </div>
+            <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-20 w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center text-[var(--orange-main)] hover:shadow-xl hover:scale-110 transition-all duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
 
-          {{-- Text --}}
-          <p class="text-muted-foreground text-sm leading-relaxed">
-            "{{ $testimonial['text'] }}"
-          </p>
-        </x-ui.card>
-      @endforeach
+        {{-- Indicators --}}
+        <div class="flex justify-center gap-3 mt-12">
+            @foreach ($testimonials as $index => $testimonial)
+              <button
+                class="indicator-dot h-2 rounded-full transition-all duration-500 {{ $index === 0 ? 'bg-[var(--orange-main)] w-8 shadow-lg' : 'bg-[var(--orange-main)] w-2 hover:bg-text-[var(--orange-main)]' }}"
+                data-index="{{ $index }}"
+                aria-label="Go to testimonial {{ $index + 1 }}"
+              ></button>
+            @endforeach
+        </div>
     </div>
-
-  </div>
 </section>
