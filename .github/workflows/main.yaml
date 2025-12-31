@@ -1,0 +1,64 @@
+name: Deploy to cPanel via SSH
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-interaction --no-suggest --optimize-autoloader
+
+      - name: Directory Permissions
+        run: chmod -R 755 storage bootstrap/cache
+
+      - name: Deploy to cPanel
+        uses: appleboy/ssh-action@master
+        env:
+          LARAVEL_ENV: ${{ secrets.ENV_ERO }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.HPANEL_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 64000
+          envs: LARAVEL_ENV
+          script: |
+            # Navigate to the deployment directory
+            cd /home/zonakela/public_html/ero-landing
+
+            # Print the current directory to check if we are in the right place
+            echo "Current directory: $(pwd)"
+            
+            # Print the contents of the directory to verify if it's empty or not
+            echo "Directory contents:"
+            ls -la
+
+            # Check if the current directory is a Git repository
+            if [ -d ".git" ]; then
+              echo "Git repository detected. Pulling latest changes..."
+              git pull origin main
+            else
+              echo "Not a Git repository. Cloning repository..."
+              git clone git@github.com:ferdipn/ero-landing.git .
+            fi
+
+            # Install Composer dependencies
+            composer install --prefer-dist --no-interaction --optimize-autoloader
+
+            # Set environment variable and generate application key
+            echo "$LARAVEL_ENV" > .env
+            php artisan key:generate
+            php artisan config:clear
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            npm install
