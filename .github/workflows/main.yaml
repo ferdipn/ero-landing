@@ -25,14 +25,14 @@ jobs:
         env:
           LARAVEL_ENV: ${{ secrets.ENV_ERO }}
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.HPANEL_HOST }}
           username: ${{ secrets.HPANEL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 64000
           envs: LARAVEL_ENV
           script: |
             # Navigate to the deployment directory
-            cd /home/zonakela/public_html/ero-landing
+            cd /home/u1176032/public_html/ero-landing
 
             # Print the current directory to check if we are in the right place
             echo "Current directory: $(pwd)"
