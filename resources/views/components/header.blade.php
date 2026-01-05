@@ -16,27 +16,20 @@ $navLinks = [
     <div class="flex items-center justify-between gap-4 h-16 md:h-20">
 
       {{-- Logo --}}
-      <div class="flex flex-col">
-        <span
-          id="logo-title"
-          class="text-xl md:text-2xl font-semibold tracking-tight orange-main"
+      <a href="/" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+        <img
+          src="{{ asset('images/logo/logo-ero-tour-travel.webp') }}"
+          alt="Ero Tour & Travel Logo"
+          class="h-12 md:h-16 w-auto"
         >
-          Ero Tour
-        </span>
-        <span
-          id="logo-subtitle"
-          class="text-[10px] md:text-xs text-white/80"
-        >
-          Since 1998
-        </span>
-      </div>
+      </a>
 
       {{-- Desktop Nav --}}
       <nav class="hidden lg:flex items-center gap-1">
         @foreach ($navLinks as $link)
           <button
             data-href="{{ $link['href'] }}"
-            class="nav-link px-4 py-2 font-medium text-lg rounded-md transition-colors text-[var(--orange-main)] hover:text-[var(--orange-main)] hover:bg-[var(--orange-soft)] hover:bg-opacity-30 cursor-pointer"
+            class="nav-link px-4 py-2 font-medium text-lg rounded-md transition-colors text-white/90  hover:bg-[var(--orange-soft)]/30 hover:bg-opacity-20 cursor-pointer"
           >
             {{ $link['label'] }}
           </button>

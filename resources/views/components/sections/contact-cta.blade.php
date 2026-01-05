@@ -1,5 +1,5 @@
 @php
-  $whatsappUrl = 'https://wa.me/6281234567890?text=Halo%20Ero%20Tour,%20saya%20ingin%20konsultasi%20perjalanan';
+  $whatsappUrl = 'https://wa.me/6281277871993?text=Halo%20Ero%20Tour,%20saya%20ingin%20konsultasi%20perjalanan';
 @endphp
 
 <section
@@ -30,7 +30,7 @@
           <button
             onclick="window.open('{{ $whatsappUrl }}', '_blank')"
             data-testid="button-whatsapp"
-            class="px-6 py-3 bg-white text-[var(--orange-main)] font-bold rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+            class="px-6 py-3 bg-white text-[var(--orange-main)] font-bold rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
           >
             <x-ui.icon name="whatsapp" class="w-5 h-5 text-[var(--orange-main)] fill-current" />
             Chat via WhatsApp
@@ -74,8 +74,8 @@
             </div>
             <div>
               <h4 class="font-bold text-white mb-2 text-lg">Email</h4>
-              <p class="text-white/80 text-sm leading-relaxed">info@erotour.com</p>
-              <p class="text-white/80 text-sm leading-relaxed">booking@erotour.com</p>
+              <p class="text-white/80 text-sm leading-relaxed">info@erotour.co.id</p>
+              <p class="text-white/80 text-sm leading-relaxed">mice@erotour.co.id</p>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
             <div>
               <h4 class="font-bold text-white mb-2 text-lg">Kantor</h4>
               <p class="text-white/80 text-sm leading-relaxed">
-                Jl. Sudirman No. 123, Padang<br />
+                Jl Juanda No 6, Padang<br />
                 Sumatera Barat, Indonesia
               </p>
             </div>

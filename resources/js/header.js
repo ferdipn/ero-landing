@@ -2,8 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('site-header')
-  const logoTitle = document.getElementById('logo-title')
-  const logoSubtitle = document.getElementById('logo-subtitle')
   const mobileMenu = document.getElementById('mobile-menu')
   const toggleBtn = document.getElementById('mobile-menu-toggle')
   const iconMenu = document.getElementById('icon-menu')
@@ -17,15 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrolled = window.scrollY > 20
 
     header.classList.toggle('bg-transparent', !scrolled)
-    header.classList.toggle('bg-[var(--background)]/95', scrolled)
+    header.classList.toggle('bg-[var(--orange-main)]/10', scrolled)
     header.classList.toggle('backdrop-blur-md', scrolled)
     header.classList.toggle('shadow-md', scrolled)
-
-    logoTitle.classList.toggle('text-white', !scrolled)
-    logoTitle.classList.toggle('text-[var(--primary)]', scrolled)
-
-    logoSubtitle.classList.toggle('text-white/80', !scrolled)
-    logoSubtitle.classList.toggle('text-[#6B6B6B]', scrolled)
 
     menuBtns.forEach(btn => {
       btn.classList.toggle('text-white/90', !scrolled)

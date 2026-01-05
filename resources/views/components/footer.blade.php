@@ -23,8 +23,8 @@
     </div>
     <div>
         <h4 class="font-semibold mb-4 text-[var(--primary)]">Contact</h4>
-        <p class="text-[var(--muted-foreground)]">Email: info@erotour.com</p>
-        <p class="text-[var(--muted-foreground)]">Phone: +62 812-3456-7890</p>
+        <p class="text-[var(--muted-foreground)]">Email: info@erotour.co.id</p>
+        <p class="text-[var(--muted-foreground)]">Phone: +62 127-787-1993</p>
     </div>
     </div>
     <div class="border-t border-[var(--border)] pt-8 text-center text-[var(--muted-foreground)]">
