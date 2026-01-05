@@ -27,7 +27,7 @@ jobs:
         with:
           host: ${{ secrets.HPANEL_HOST }}
           username: ${{ secrets.HPANEL_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}]
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           envs: LARAVEL_ENV
           script: |
