@@ -60,16 +60,16 @@ jobs:
             php artisan route:cache
             php artisan view:cache
  
-            rsync -av --delete /github/workspace/public/ $APP_DIR/public/
-
-            rsync -av --delete /github/workspace/public/build/ $APP_DIR/public/build/
+            rsync -av --delete public/ $APP_DIR/public/
+            rsync -av --delete public/build/ $APP_DIR/public/build/
 
             rsync -av --delete \
               --exclude=index.php \
               --exclude=.htaccess \
+              --exclude=favicon.ico \
               --exclude=build/ \
-              /github/workspace/public/ $PUBLIC_DIR/
+              public/ $PUBLIC_DIR/
 
-            rsync -av --delete /github/workspace/public/build/ $PUBLIC_DIR/build/
+            rsync -av --delete public/build/ $PUBLIC_DIR/build/
 
             echo "=== Deploy finished successfully ==="
