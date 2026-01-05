@@ -53,7 +53,6 @@ jobs:
             composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts
 
             # Set environment variable and generate application key
-            echo "$LARAVEL_ENV" > .env
             php artisan key:generate
             php artisan config:clear
             php artisan migrate --force
@@ -61,13 +60,16 @@ jobs:
             php artisan route:cache
             php artisan view:cache
  
-            rsync -av --delete public/ $APP_DIR/public/
+            rsync -av --delete /github/workspace/public/ $APP_DIR/public/
+
+            rsync -av --delete /github/workspace/public/build/ $APP_DIR/public/build/
 
             rsync -av --delete \
               --exclude=index.php \
               --exclude=.htaccess \
-              --exclude=favicon.ico \
-              public/ $PUBLIC_DIR/
+              --exclude=build/ \
+              /github/workspace/public/ $PUBLIC_DIR/
 
+            rsync -av --delete /github/workspace/public/build/ $PUBLIC_DIR/build/
 
             echo "=== Deploy finished successfully ==="
