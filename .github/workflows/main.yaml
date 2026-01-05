@@ -28,7 +28,7 @@ jobs:
           host: ${{ secrets.HPANEL_HOST }}
           username: ${{ secrets.HPANEL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}]
-          port: 65002
+          port: ${{ secrets.SSH_PORT }}
           envs: LARAVEL_ENV
           script: |
             # Navigate to the deployment directory
