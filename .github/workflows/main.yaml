@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -15,61 +15,80 @@ jobs:
           php-version: '8.4'
 
       - name: Build frontend
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
         run: |
           npm ci
           npm run build
 
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-interaction --no-suggest --optimize-autoloader
+      - name: Create Deployment Artifact
+        run: tar -czf deploy.tar.gz . --exclude=.git --exclude=node_modules
 
-      - name: Directory Permissions
-        run: chmod -R 755 storage bootstrap/cache
+      - name: Upload Artifact via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "deploy.tar.gz"
+          target: "/home/${{ secrets.SSH_USERNAME }}/deploy_temp"
 
       - name: Deploy to cPanel
         uses: appleboy/ssh-action@master
-        env:
-          LARAVEL_ENV: ${{ secrets.ENV_ERO }}
+        # env:
+        #   LARAVEL_ENV: ${{ secrets.ENV_ERO }}
         with:
           host: ${{ secrets.HPANEL_HOST }}
           username: ${{ secrets.HPANEL_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          envs: LARAVEL_ENV
+          # envs: LARAVEL_ENV
           script: |
 
-            APP_DIR=/home/u1776032/app/ero-landing
-            PUBLIC_DIR=/home/u1776032/public_html
+            cd /home/${{ secrets.HPANEL_USERNAME }}/app
+            tar -xzf /home/${{ secrets.HPANEL_USERNAME }}/deploy_temp/deploy.tar.gz -C .
+            rm /home/${{ secrets.HPANEL_USERNAME }}/deploy_temp/deploy.tar.gz
 
-            if [ ! -d "$APP_DIR/.git" ]; then
-              echo "First deploy, cloning repo..."
-              git clone git@github.com:ferdipn/ero-landing.git $APP_DIR
-            fi
-
-            cd $APP_DIR
-            git pull origin main
-
-            echo "$LARAVEL_ENV" > .env
-
-            composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts
-
-            # Set environment variable and generate application key
-            php artisan key:generate
-            php artisan config:clear
             php artisan migrate --force
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+            php artisan storage:link
+
+            # if [ ! -d "$APP_DIR/.git" ]; then
+            #   echo "First deploy, cloning repo..."
+            #   git clone git@github.com:ferdipn/ero-landing.git $APP_DIR
+            # fi
+
+            # cd $APP_DIR
+            # git pull origin main
+
+            # echo "$LARAVEL_ENV" > .env
+
+            # composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts
+
+            # # Set environment variable and generate application key
+            # php artisan key:generate
+            # php artisan config:clear
+            # php artisan migrate --force
+            # php artisan config:cache
+            # php artisan route:cache
+            # php artisan view:cache
  
-            rsync -av --delete public/ $APP_DIR/public/
-            rsync -av --delete public/build/ $APP_DIR/public/build/
+            # rsync -av --delete public/ $APP_DIR/public/
+            # rsync -av --delete public/build/ $APP_DIR/public/build/
 
-            rsync -av --delete \
-              --exclude=index.php \
-              --exclude=.htaccess \
-              --exclude=favicon.ico \
-              --exclude=build/ \
-              public/ $PUBLIC_DIR/
+            # rsync -av --delete \
+            #   --exclude=index.php \
+            #   --exclude=.htaccess \
+            #   --exclude=favicon.ico \
+            #   --exclude=build/ \
+            #   public/ $PUBLIC_DIR/
 
-            rsync -av --delete public/build/ $PUBLIC_DIR/build/
+            # rsync -av --delete public/build/ $PUBLIC_DIR/build/
 
-            echo "=== Deploy finished successfully ==="
+            # echo "=== Deploy finished successfully ==="
