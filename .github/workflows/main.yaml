@@ -37,7 +37,7 @@ jobs:
           envs: LARAVEL_ENV
           script: |
             # Navigate to the deployment directory
-            cd /home/u1176032/public_html/ero-landing
+            cd /home/u1776032/public_html/ero-landing
 
             # Print the current directory to check if we are in the right place
             echo "Current directory: $(pwd)"
