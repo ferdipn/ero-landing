@@ -62,6 +62,9 @@ jobs:
             php artisan view:cache
 
             echo "=== Sync public files to public_html ==="
-            rsync -av --delete public/ $PUBLIC_DIR/
+            rsync -av --delete public/ $PUBLIC_DIR/public
+
+            echo "Sync public files to public_html..."
+            rsync -av --delete public/ $PUBLIC_DIR
 
             echo "=== Deploy finished successfully ==="
