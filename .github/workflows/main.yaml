@@ -60,6 +60,8 @@ jobs:
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+ 
+            rsync -av --delete public/ $APP_DIR/public/
 
             rsync -av --delete \
               --exclude=index.php \
