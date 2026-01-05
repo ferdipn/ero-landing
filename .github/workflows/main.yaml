@@ -36,27 +36,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           envs: LARAVEL_ENV
           script: |
-            # # Navigate to the deployment directory
-            # cd /home/u1776032/public_html/ero-landing
-
-            # # Print the current directory to check if we are in the right place
-            # echo "Current directory: $(pwd)"
-            
-            # # Print the contents of the directory to verify if it's empty or not
-            # echo "Directory contents:"
-            # ls -la
-
-            # # Check if the current directory is a Git repository
-            # if [ -d ".git" ]; then
-            #   echo "Git repository detected. Pulling latest changes..."
-            #   git pull origin main
-            # else
-            #   echo "Not a Git repository. Cloning repository..."
-            #   git clone git@github.com:ferdipn/ero-landing.git .
-            # fi
-
-            # # Install Composer dependencies
-            # composer install --prefer-dist --no-interaction --optimize-autoloader --no-scripts
 
             APP_DIR=/home/u1776032/app/ero-landing
             PUBLIC_DIR=/home/u1776032/public_html
