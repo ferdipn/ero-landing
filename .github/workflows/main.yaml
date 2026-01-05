@@ -56,7 +56,7 @@ jobs:
             # fi
 
             # # Install Composer dependencies
-            # composer install --prefer-dist --no-interaction --optimize-autoloader
+            # composer install --prefer-dist --no-interaction --optimize-autoloader --no-scripts
 
             APP_DIR=/home/u1776032/app/ero-landing
             PUBLIC_DIR=/home/u1776032/public_html
