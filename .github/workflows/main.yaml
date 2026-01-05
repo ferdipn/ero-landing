@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "deploy.tar.gz"
-          target: "/home/${{ secrets.SSH_USERNAME }}/deploy_temp"
+          target: "/home/${{ secrets.HPANEL_USERNAME }}/deploy_temp"
 
       - name: Deploy to cPanel
         uses: appleboy/ssh-action@master
