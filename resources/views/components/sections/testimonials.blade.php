@@ -21,10 +21,6 @@
   ];
 @endphp
 
-@push('scripts')
-  @vite('resources/js/testimonials.js')
-@endpush
-
 <section class="py-20 md:py-24 lg:py-28 bg-[var(--bg-soft)] relative overflow-hidden">
     {{-- Decorative elements --}}
     <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-48 -mt-48"></div>

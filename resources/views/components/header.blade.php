@@ -8,10 +8,6 @@ $navLinks = [
 ];
 @endphp
 
-@push('scripts')
-  @vite('resources/js/header.js')
-@endpush
-
 <header
   id="site-header"
   class="header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"

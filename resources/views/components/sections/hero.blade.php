@@ -9,10 +9,6 @@
   ];
 @endphp
 
-@push('scripts')
-    <script href="{{ asset('js/hero.js') }}" defer></script>
-@endpush
-
 <section
   id="hero"
   class="relative min-h-screen flex items-center justify-center overflow-hidden"
