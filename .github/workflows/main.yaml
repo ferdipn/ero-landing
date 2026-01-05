@@ -62,7 +62,7 @@ jobs:
 
             if [ ! -d "$APP_DIR/.git" ]; then
               echo "First deploy, cloning repo..."
-              git clone git@github.com:xxx/ero-landing.git $APP_DIR
+              git clone git@github.com:ferdipn/ero-landing.git $APP_DIR
             fi
 
             cd $APP_DIR
