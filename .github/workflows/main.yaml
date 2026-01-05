@@ -71,7 +71,7 @@ jobs:
 
             echo "$LARAVEL_ENV" > .env
 
-            composer install --no-dev --prefer-dist --optimize-autoloader
+            composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts
 
             # Set environment variable and generate application key
             echo "$LARAVEL_ENV" > .env
@@ -84,8 +84,5 @@ jobs:
 
             echo "=== Sync public files to public_html ==="
             rsync -av --delete public/ $PUBLIC_DIR/
-
-            echo "=== Fix permissions ==="
-            chmod -R 775 storage bootstrap/cache
 
             echo "=== Deploy finished successfully ==="
