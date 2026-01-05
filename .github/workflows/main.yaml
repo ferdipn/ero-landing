@@ -59,7 +59,7 @@ jobs:
             # composer install --prefer-dist --no-interaction --optimize-autoloader
 
             APP_DIR=/home/u1776032/app/ero-landing
-            PUBLIC_DIR=/home/USER/public_html
+            PUBLIC_DIR=/home/u1776032/public_html
 
             if [ ! -d "$APP_DIR/.git" ]; then
               echo "First deploy, cloning repo..."
