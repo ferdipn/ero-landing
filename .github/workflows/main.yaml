@@ -14,6 +14,9 @@ jobs:
         with:
           php-version: '8.4'
 
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,6 +35,8 @@ jobs:
             --exclude=.git \
             --exclude=node_modules \
             --exclude=.github \
+            --exclude=storage/logs/*.log \
+            --exclude=.env \
             . || true
 
       - name: Upload Artifact via SCP
@@ -62,8 +67,6 @@ jobs:
             rm /home/${{ secrets.HPANEL_USERNAME }}/deploy_temp/deploy.tar.gz
 
             echo "$LARAVEL_ENV" > .env
-
-            composer install --no-dev --prefer-dist --optimize-autoloader
 
             php artisan migrate --force
             php artisan config:clear
