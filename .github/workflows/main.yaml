@@ -59,6 +59,7 @@ jobs:
             # composer install --prefer-dist --no-interaction --optimize-autoloader
 
             APP_DIR=/home/u1776032/app/ero-landing
+            PUBLIC_DIR=/home/USER/public_html
 
             if [ ! -d "$APP_DIR/.git" ]; then
               echo "First deploy, cloning repo..."
@@ -80,3 +81,11 @@ jobs:
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+
+            echo "=== Sync public files to public_html ==="
+            rsync -av --delete public/ $PUBLIC_DIR/
+
+            echo "=== Fix permissions ==="
+            chmod -R 775 storage bootstrap/cache
+
+            echo "=== Deploy finished successfully ==="
