@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Ero Tour & Travel | Tour Travel Sumatera Barat Terpercaya' )
+@section('title', 'Ero Tour Travel | Tour Travel Sumatera Barat Terpercaya' )
 @section('description', 'Ero Tour & Travel Padang - Paket wisata Sumatera Barat terbaik 2025. Liburan keluarga, group tour, dan perjalanan ke destinasi eksotis dengan harga terjangkau & guide profesional. Booking mudah & aman.')
 @section('keywords', 'paket wisata padang, tour travel padang, liburan sumatera barat, paket tour padang, wisata padang murah, agen travel padang, travel agent sumatera barat, destinasi wisata padang, tour ke padang')
 @section('og:title', 'Paket Wisata Padang | Liburan Sumatera Barat Bersama Ero Tour')

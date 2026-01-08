@@ -59,8 +59,7 @@
             </div>
             <div>
               <h4 class="font-bold text-white mb-2 text-lg">Telepon</h4>
-              <p class="text-white/80 text-sm leading-relaxed">+62 812-3456-7890</p>
-              <p class="text-white/80 text-sm leading-relaxed">+62 751-123456</p>
+              <p class="text-white/80 text-sm leading-relaxed">+62 812-7787-1993</p>
             </div>
           </div>
         </div>
